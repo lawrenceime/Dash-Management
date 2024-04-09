@@ -1,7 +1,11 @@
 // import Image from "next/image";
+'use client'
+import Register from "./auth/registration/Register";
 
 export default function Home() {
   return (
-   <div>Hello World</div>
+   <div>
+    <Register/>
+   </div>
   );
 }

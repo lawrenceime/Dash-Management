@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
 
@@ -9,6 +11,23 @@ const Login = () => {
   const img3 = '/images/google-icon.svg'
   const img4 = '/images/facebook-icon.svg'
   const img5 = '/images/apple-icon.svg'
+
+  const  [isPasswordEye , setIspasswordEye] = useState(false);
+  const [passwordInputType , setPasswordInputType] = useState('password')
+
+  const handlePasswordEyeClose = () => {
+    setIspasswordEye(false)
+    setPasswordInputType('password')
+  }
+
+  const handlePasswordEyeOpen = () => {
+    setIspasswordEye(true)
+    setPasswordInputType('text')
+  }
+  
+  
+
+  
 
   return (
     <>
@@ -26,12 +45,17 @@ const Login = () => {
    
     <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px]' type='email' name='emailAddress' placeholder='Email Address' />
     <div className='flex items-center relative'>
-      <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px] relative ' type='text' name='password' placeholder='password' />
-      <Image src={img2} alt='password-lock' width={16} height={16} className='absolute right-[30px] mt-[15px]' />
+      <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px] relative ' type= {passwordInputType} name='password' placeholder='password' />
+     
+      {isPasswordEye?<IoEyeOutline width={16} height={10} className='absolute right-[30px] mt-[15px] cursor-pointer' onClick={handlePasswordEyeClose} />:< FaRegEyeSlash  width={16} height={10} className='absolute right-[30px] mt-[15px] cursor-pointer' onClick={handlePasswordEyeOpen}  />}
+
     </div>
     
-
-    <button className='w-[100%] h-[50px] rounded-[6px] bg-[#3366FF] font-inter text-[#ffff] font-medium text-[16px] mt-[24px] mb-[31.5px] '>SIGN UP</button>
+    
+    <div className='w-[100%] h-[50px] rounded-[6px] bg-[#3366FF] font-inter text-[#ffff] font-medium text-[16px] mt-[24px] mb-[31.5px] cursor-pointer  flex items-center justify-center'>
+    <Link href='/home' >LOG IN</Link>
+    </div>
+    
 
     <div className='flex justify-center items-center gap-[5px] mb-[16px]'>
       <hr className='border w-[140px]' />
@@ -41,28 +65,34 @@ const Login = () => {
     <div className='space-y-[8px] mb-[24px]'>
       <button className='flex items-center justify-center gap-[12px] border rounded-[8px] w-[100%] h-[44px]'>
         <Image src={img3} alt='google-icon' width={24} height={24} />
-        <p className='font-inter '>Sign Up with Google</p>
+        <p className='font-inter '>Log in with Google</p>
       </button>
       <button className='flex items-center justify-center gap-[12px] border rounded-[8px] w-[100%] h-[44px]'>
         <Image src={img4} alt='google-icon' width={24} height={24} />
-        <p className='font-inter '>Sign Up Facebook</p>
+        <p className='font-inter '>Log in with Facebook</p>
       </button>
       <button className='flex items-center justify-center gap-[12px] border rounded-[8px] w-[100%] h-[44px]'>
         <Image src={img5} alt='google-icon' width={24} height={24} />
-        <p className='font-inter '>Sign Up with Apple</p>
+        <p className='font-inter '>Log in with Apple</p>
       </button>
     </div>
-    <div className='flex items-center justify-center lg:mb-[21px]'>
-      <p className='font-inter'>Already have an account? </p>
-      <Link className='text-[#3366FF]' href='#'>Log In</Link>
-    </div>
+    
 
 
   </div>
 
 
 </form>
+
+<p className='font-inter font-normal  underline text-center mt-[24px]'> Forgot your password?</p>
+
+<div className='flex items-center justify-center mt-[16px] lg:p-[20px]'>
+<p className='font-inter' >Don't have an account?</p><span className='text-[#3366FF] font-inter '>Sign Up</span>
 </div>
+</div>
+
+
+
 
       
     </>

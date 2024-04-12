@@ -1,12 +1,12 @@
 'use client'
-
 import React from 'react'
-import Login from './Login'
+import Home from './Home'
+
 
 const page = () => {
   return (
     <div>
-    <Login/>
+    <Home/>
     </div>
   )
 }

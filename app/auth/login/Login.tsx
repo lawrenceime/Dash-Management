@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IoEyeOutline } from "react-icons/io5";
@@ -11,6 +11,21 @@ const Login = () => {
   const img3 = '/images/google-icon.svg'
   const img4 = '/images/facebook-icon.svg'
   const img5 = '/images/apple-icon.svg'
+
+  const  [isPasswordEye , setIspasswordEye] = useState(false);
+  const [passwordInputType , setPasswordInputType] = useState('password')
+
+  const handlePasswordEyeClose = () => {
+    setIspasswordEye(false)
+    setPasswordInputType('password')
+  }
+
+  const handlePasswordEyeOpen = () => {
+    setIspasswordEye(true)
+    setPasswordInputType('text')
+  }
+  
+  
 
   
 
@@ -30,9 +45,9 @@ const Login = () => {
    
     <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px]' type='email' name='emailAddress' placeholder='Email Address' />
     <div className='flex items-center relative'>
-      <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px] relative ' type='text' name='password' placeholder='password' />
+      <input className=' border rounded-[6px] bg-[#F3F7FE] w-[100%] h-[50px] outline-none mt-[18px] p-[12px] relative ' type= {passwordInputType} name='password' placeholder='password' />
      
-      <IoEyeOutline width={16} height={10} className='absolute right-[30px] mt-[15px] cursor-pointer'  />
+      {isPasswordEye?<IoEyeOutline width={16} height={10} className='absolute right-[30px] mt-[15px] cursor-pointer' onClick={handlePasswordEyeClose} />:< FaRegEyeSlash  width={16} height={10} className='absolute right-[30px] mt-[15px] cursor-pointer' onClick={handlePasswordEyeOpen}  />}
 
     </div>
     
